@@ -27,7 +27,8 @@ const ProductDescriptionInfo = ({
   productID,
   defaultStore,
   userData,
-  strings
+  strings,
+  stock
   // addToWishlist,
   // addToCompare
 }) => {
@@ -90,7 +91,7 @@ const ProductDescriptionInfo = ({
   }
   const getPrice = async (tempSelectedOptions) => {
     setLoader(true)
-    let action = constant.ACTION.PRODUCT + productID + '/' + constant.ACTION.PRICE;
+    let action = window._env_.APP_BASE_URL + '/api/v2/' + constant.ACTION.PRODUCT + productID + '/variation/';
     let param = { "options": tempSelectedOptions }
     try {
       let response = await WebService.post(action, param);
@@ -283,7 +284,7 @@ const ProductDescriptionInfo = ({
             <button onClick={() => setQuantityCount(quantityCount < product.quantity ? quantityCount + 1 : quantityCount)} className="inc qtybutton">+</button>
           </div>
           <div className="pro-details-cart btn-hover">
-            {product.available && product.canBePurchased && product.visible && product.quantity > 0 ? (
+            {product.available && product.canBePurchased && product.visible && (stock ? stock.inStock : product.quantity > 0) ? (
               <button
                 onClick={() => {
                   let options = [];

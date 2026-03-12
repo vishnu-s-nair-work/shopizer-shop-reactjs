@@ -16,6 +16,7 @@ const ProductDetails = ({ strings, location, productID, currentLanguageCode, set
   const { pathname } = location;
   const [productDetails, setProductDetails] = useState();
   const [productReview, setProductReview] = useState([]);
+  const [productStock, setProductStock] = useState(null);
 
   useEffect(() => {
     getProductDetails();
@@ -32,9 +33,22 @@ const ProductDetails = ({ strings, location, productID, currentLanguageCode, set
         console.log(response)
         setProductDetails(response)
         setLoader(false)
+        getStock(response.id);
       }
     } catch (error) {
       setLoader(false)
+    }
+  }
+
+  const getStock = async (id) => {
+    let action = constant.ACTION.PRODUCTS + id + '/' + constant.ACTION.AVAILABILITY + '?store=' + defaultStore;
+    try {
+      let response = await WebService.get(action);
+      if (response) {
+        setProductStock(response);
+      }
+    } catch (error) {
+      // stock unavailable — fail silently
     }
   }
   const getReview = async () => {
@@ -76,6 +90,7 @@ const ProductDetails = ({ strings, location, productID, currentLanguageCode, set
             spaceBottomClass="pb-100"
             strings={strings}
             product={productDetails}
+            stock={productStock}
           />
         }
 

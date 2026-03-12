@@ -11,6 +11,7 @@ const ProductImageDescription = ({
   spaceBottomClass,
   galleryType,
   product,
+  stock,
   strings
   // currency,
   // cartItems,
@@ -50,6 +51,13 @@ const ProductImageDescription = ({
              ( */}
             <ProductImageGallery product={product} />
             {/* )} */}
+            {stock && (
+              <div className="product-stock mt-10">
+                {stock.inStock
+                  ? <span style={{color: 'green'}}>&#10003; In Stock ({stock.quantity})</span>
+                  : <span style={{color: 'red'}}>&#10007; Out of Stock</span>}
+              </div>
+            )}
           </div>
           <div className="col-lg-6 col-md-6">
             {/* product description info */}
@@ -64,6 +72,7 @@ const ProductImageDescription = ({
               // wishlistItem={wishlistItem}
               // compareItem={compareItem}
               addToast={addToast}
+              stock={stock}
             />
           </div>
         </div>
