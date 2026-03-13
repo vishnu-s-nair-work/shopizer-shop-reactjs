@@ -12,6 +12,7 @@ import StarRatings from 'react-star-ratings';
 import WebService from '../../util/webService';
 import constant from '../../util/constant';
 import { setLoader } from "../../redux/actions/loaderActions";
+import WishlistButton from "./WishlistButton";
 
 const ProductDescriptionInfo = ({
   product,
@@ -309,36 +310,10 @@ const ProductDescriptionInfo = ({
                 <button disabled>{strings["Out of Stock"]}</button>
               )}
           </div>
-          {/* <div className="pro-details-wishlist">
-            <button
-              className={wishlistItem !== undefined ? "active" : ""}
-              disabled={wishlistItem !== undefined}
-              title={
-                wishlistItem !== undefined
-                  ? "Added to wishlist"
-                  : "Add to wishlist"
-              }
-              onClick={() => addToWishlist(product, addToast)}
-            >
-              <i className="pe-7s-like" />
-            </button>
+          <div className="pro-details-wishlist">
+            <WishlistButton productId={product.id} />
           </div>
-          <div className="pro-details-compare">
-            <button
-              className={compareItem !== undefined ? "active" : ""}
-              disabled={compareItem !== undefined}
-              title={
-                compareItem !== undefined
-                  ? "Added to compare"
-                  : "Add to compare"
-              }
-              onClick={() => addToCompare(product, addToast)}
-            >
-              <i className="pe-7s-shuffle" />
-            </button>
-          </div> */}
         </div>
-        // )
       }
       <div className="pro-details-meta">
         <span>{strings["SKU"]} :</span>

@@ -23,7 +23,8 @@ const IconGroup = ({
   setUser,
   deleteAllFromCart,
   strings,
-  getCart
+  getCart,
+  wishlistCount
 }) => {
   const pathname = useRouteMatch();
   const history = useHistory();
@@ -226,22 +227,16 @@ const IconGroup = ({
           </ul>
         </div>
       </div>
-      {/* <div className="same-style header-compare">
-        <Link to={process.env.PUBLIC_URL + "/compare"}>
-          <i className="pe-7s-shuffle" />
-          <span className="count-style">
-            {compareData && compareData.length ? compareData.length : 0}
-          </span>
-        </Link>
-      </div> */}
-      {/* <div className="same-style header-wishlist">
-        <Link to={process.env.PUBLIC_URL + "/wishlist"}>
-          <i className="pe-7s-like" />
-          <span className="count-style">
-            {wishlistData && wishlistData.length ? wishlistData.length : 0}
-          </span>
-        </Link>
-      </div> */}
+      {/* Wishlist icon — shown only when logged in */}
+      {userData && (
+        <div className="same-style header-wishlist">
+          <Link to={process.env.PUBLIC_URL + "/wishlist"}>
+            <i className="pe-7s-like" />
+            <span className="count-style">{wishlistCount > 0 ? wishlistCount : 0}</span>
+          </Link>
+        </div>
+      )}
+      {/* compare and old wishlist icons removed */}
       {
         pathname.url !== '/checkout' &&
         <div className="same-style cart-wrap d-none d-lg-block">

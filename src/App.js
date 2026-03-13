@@ -43,6 +43,7 @@ const NotFound = lazy(() => import("./pages/other/NotFound"));
 const OrderConfirm = lazy(() => import("./pages/other/OrderConfirm"));
 const Content = lazy(() => import("./pages/content/Content"));
 const SearchProduct = lazy(() => import("./pages/search-product/SearchProduct"));
+const Wishlist = lazy(() => import("./pages/other/Wishlist"));
 
 
 //export default function App = (props) => {
@@ -170,6 +171,10 @@ const App = (props) => {
                   component={OrderConfirm}
                 />
 
+                <Route
+                  path="/wishlist"
+                  component={Wishlist}
+                />
                 <Route
                   path={"/not-found"}
                   component={NotFound}

@@ -41,7 +41,8 @@ const Constant = {
         HEADER_MESSAGE: 'headerMessage/',
         AGREEMENT: 'agreement/',
         PROMO: 'promo/',
-        AVAILABILITY: 'availability'
+        AVAILABILITY: 'availability',
+        WISHLIST: 'wishlist/'
     }
 }
 
