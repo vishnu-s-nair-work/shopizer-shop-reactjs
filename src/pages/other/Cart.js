@@ -23,6 +23,7 @@ import Layout from "../../layouts/Layout";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import constant from '../../util/constant';
 import WebService from '../../util/webService';
+import WishlistButton from "../../components/product/WishlistButton";
 
 const couponCode = {
   code: {
@@ -299,6 +300,7 @@ const Cart = ({
 
                                 <td className="product-remove">
                                   <button onClick={() => deleteFromCart(cartItems.code, cartItem, defaultStore, addToast)}> <i className="fa fa-times"></i> </button>
+                                  <WishlistButton productId={cartItem.id} />
                                 </td>
                               </tr>
                             );

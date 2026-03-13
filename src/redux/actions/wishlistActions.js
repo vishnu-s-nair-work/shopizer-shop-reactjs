@@ -22,7 +22,11 @@ export const addToWishlist = (productId, addToast) => async dispatch => {
     dispatch(fetchWishlist());
     if (addToast) addToast('Added to Wishlist', { appearance: 'success', autoDismiss: true });
   } catch (error) {
-    if (addToast) addToast('Please login to add to wishlist', { appearance: 'error', autoDismiss: true });
+    const status = error?.response?.status;
+    const msg = status === 401 || status === 403
+      ? 'Please login to add to wishlist'
+      : `Error adding to wishlist (${status || 'network error'})`;
+    if (addToast) addToast(msg, { appearance: 'error', autoDismiss: true });
   }
 };
 

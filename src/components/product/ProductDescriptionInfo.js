@@ -259,62 +259,47 @@ const ProductDescriptionInfo = ({
       ) : (
           ""
         )}
-      {
-        //   product.affiliateLink ? (
-        //   <div className="pro-details-quality">
-        //     <div className="pro-details-cart btn-hover ml-0">
-        //       <a
-        //         href={product.affiliateLink}
-        //         rel="noopener noreferrer"
-        //         target="_blank"
-        //       >
-        //         Buy Now
-        //       </a>
-        //     </div>
-        //   </div>
-        // ) : (
-        <div className="pro-details-quality">
-          <div className="cart-plus-minus">
-            <button onClick={() => setQuantityCount(quantityCount > 1 ? quantityCount - 1 : 1)} className="dec qtybutton">-</button>
-            <input
-              className="cart-plus-minus-box"
-              type="text"
-              value={quantityCount}
-              readOnly
-            />
-            <button onClick={() => setQuantityCount(quantityCount < product.quantity ? quantityCount + 1 : quantityCount)} className="inc qtybutton">+</button>
-          </div>
-          <div className="pro-details-cart btn-hover">
-            {product.available && product.canBePurchased && product.visible && (stock ? stock.inStock : product.quantity > 0) ? (
-              <button
-                onClick={() => {
-                  let options = [];
-                  selectedProductColor.forEach((a) => {
-                    options.push({ id: a.id })
-                  })
-
-                  addToCart(
-                    product,
-                    addToast,
-                    cartItems,
-                    quantityCount,
-                    defaultStore,
-                    userData,
-                    options
-                  )
-                }}>
-                {" "}
-                {strings["Add to cart"]}{" "}
-              </button>
-            ) : (
-                <button disabled>{strings["Out of Stock"]}</button>
-              )}
-          </div>
-          <div className="pro-details-wishlist">
-            <WishlistButton productId={product.id} />
-          </div>
+      <div className="pro-details-quality">
+        <div className="cart-plus-minus">
+          <button onClick={() => setQuantityCount(quantityCount > 1 ? quantityCount - 1 : 1)} className="dec qtybutton">-</button>
+          <input
+            className="cart-plus-minus-box"
+            type="text"
+            value={quantityCount}
+            readOnly
+          />
+          <button onClick={() => setQuantityCount(quantityCount < product.quantity ? quantityCount + 1 : quantityCount)} className="inc qtybutton">+</button>
         </div>
-      }
+        <div className="pro-details-cart btn-hover">
+          {product.available && product.canBePurchased && product.visible && (stock ? stock.inStock : product.quantity > 0) ? (
+            <button
+              onClick={() => {
+                let options = [];
+                selectedProductColor.forEach((a) => {
+                  options.push({ id: a.id })
+                })
+
+                addToCart(
+                  product,
+                  addToast,
+                  cartItems,
+                  quantityCount,
+                  defaultStore,
+                  userData,
+                  options
+                )
+              }}>
+              {" "}
+              {strings["Add to cart"]}{" "}
+            </button>
+          ) : (
+              <button disabled>{strings["Out of Stock"]}</button>
+            )}
+        </div>
+        <div className="pro-details-wishlist">
+          <WishlistButton productId={product.id} />
+        </div>
+      </div>
       <div className="pro-details-meta">
         <span>{strings["SKU"]} :</span>
         <ul>

@@ -6,7 +6,7 @@ import { addToWishlist, removeFromWishlist } from '../../redux/actions/wishlistA
 const WishlistButton = ({ productId }) => {
   const dispatch = useDispatch();
   const { addToast } = useToasts();
-  const items = useSelector(state => state.wishlistData.items);
+  const items = useSelector(state => state.wishlistData?.items || []);
   const isWishlisted = items.some(item => item.productId === productId);
 
   const handleClick = (e) => {
@@ -23,8 +23,9 @@ const WishlistButton = ({ productId }) => {
       className={`wishlist-btn${isWishlisted ? ' active' : ''}`}
       title={isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}
       onClick={handleClick}
+      style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'none', border: '1px solid #ccc', padding: '8px 14px', cursor: 'pointer', fontSize: '14px' }}
     >
-      <i className={isWishlisted ? 'fa fa-heart' : 'fa fa-heart-o'} />
+      {isWishlisted ? '♥' : '♡'} Wishlist
     </button>
   );
 };
