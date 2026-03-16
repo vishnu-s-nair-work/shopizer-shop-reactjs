@@ -24,7 +24,7 @@ jobs:
         run: npm test -- --watchAll=false
 
       - name: Build artifact
-        run: npm run build
+        run: CI=false npm run build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

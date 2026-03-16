@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 import { fetchWishlist, removeFromWishlist } from '../../redux/actions/wishlistActions';
-import { Breadcrumb } from '../../wrappers/breadcrumb/Breadcrumb';
 
 const Wishlist = () => {
   const dispatch = useDispatch();
