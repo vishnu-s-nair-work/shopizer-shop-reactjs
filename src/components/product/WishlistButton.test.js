@@ -32,14 +32,14 @@ const renderWithStore = (items = []) => {
 };
 
 describe('WishlistButton', () => {
-  test('renders heart-o icon when product not in wishlist', () => {
+  test('renders empty heart when product not in wishlist', () => {
     renderWithStore([]);
-    expect(document.querySelector('.fa-heart-o')).toBeTruthy();
+    expect(screen.getByRole('button').textContent).toContain('♡');
   });
 
   test('renders filled heart when product is in wishlist', () => {
     renderWithStore([{ productId: 10 }]);
-    expect(document.querySelector('.fa-heart')).toBeTruthy();
+    expect(screen.getByRole('button').textContent).toContain('♥');
   });
 
   test('button has active class when wishlisted', () => {
